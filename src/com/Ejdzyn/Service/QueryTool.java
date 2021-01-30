@@ -5,9 +5,7 @@ import com.Ejdzyn.Connection.Interface;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @SuppressWarnings("ALL")
 public class QueryTool implements QuerySerivce{
@@ -22,12 +20,9 @@ public class QueryTool implements QuerySerivce{
 
     }
 
-    /*ResultSet result = state.executeQuery(selectQuery);
-            System.out.println("Połączono");
-
-            while(result.next()){
-        System.out.println(result.getString("column_name") +" : "+ result.getString("data_type"));
-    }*/
+    public void close() throws SQLException {
+        anInterface.getCon().close();
+    }
 
     @Override
     public List<String> getTables() throws SQLException {
@@ -62,6 +57,30 @@ public class QueryTool implements QuerySerivce{
             columns.add(result.getString("column_name"));
         }
         return columns;
+    }
+
+    @Override
+    public Map<String,List<String>> getRows(String tabela) throws SQLException {
+
+        String selectQuery =
+                "SELECT * FROM " +tabela+";";
+
+        ResultSet result = state.executeQuery(selectQuery);
+
+        Map<String,List<String>> products = new HashMap<>();
+        List<String> columns = getColumns(tabela);
+
+        for(String c : columns) {
+            products.put(c,new ArrayList<>());
+        }
+
+        int i = 0 ;
+        while(result.next()){
+            for(String c : columns) {
+                products.get(c).add(result.getString(c));
+            }
+        }
+        return products;
     }
 
 }

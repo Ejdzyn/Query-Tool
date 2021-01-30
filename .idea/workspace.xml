@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70d07d84-ece0-4690-a386-494388021e23" name="Default Changelist" comment="init">
-      <change beforePath="$PROJECT_DIR$/src/com/Ejdzyn/Connection/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Ejdzyn/Connection/Interface.java" afterDir="false" />
+    <list default="true" id="70d07d84-ece0-4690-a386-494388021e23" name="Default Changelist" comment="gui">
+      <change afterPath="$PROJECT_DIR$/src/com/Ejdzyn/Repository/RowCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/Ejdzyn/GUI/DatabaseInterfaceFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Ejdzyn/GUI/DatabaseInterfaceFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/Ejdzyn/Service/QuerySerivce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Ejdzyn/Service/QuerySerivce.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/Ejdzyn/Service/QueryTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Ejdzyn/Service/QueryTool.java" afterDir="false" />
@@ -100,7 +101,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1612027897362</updated>
-      <workItem from="1612027898510" duration="4912000" />
+      <workItem from="1612027898510" duration="12614000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1612028353251</created>
@@ -123,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612028469669</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="gui">
+      <created>1612033160500</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1612033160500</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,13 +139,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="gui" />
+    <option name="LAST_COMMIT_MESSAGE" value="gui" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1612028371845">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612028371845" />
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1612033459468">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612033459468" />
     <state x="743" y="414" width="433" height="217" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1612028947153">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -150,33 +163,37 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="666" y="261" key="FileChooserDialogImpl/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612032671492" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1612032439303">
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1612040181255">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612032439303" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1612032439303">
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612040181255" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1612040181254">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612032439303" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1612032439303">
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612040181254" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1612040181254">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612032439303" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1612032439303">
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612040181254" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1612040181255">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612032439303" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612040181255" />
     <state x="440" y="94" key="SettingsEditor" timestamp="1612028501307">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612028501307" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1612028473570">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1612033163666">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612028473570" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612033163666" />
     <state x="761" y="426" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1612028163682">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="761" y="426" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612028163682" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1612034433856">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612034433856" />
   </component>
 </project>
