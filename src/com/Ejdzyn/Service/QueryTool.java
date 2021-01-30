@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @SuppressWarnings("ALL")
@@ -29,19 +30,23 @@ public class QueryTool implements QuerySerivce{
     }*/
 
     @Override
-    public void getTables(String schema) throws SQLException {
+    public List<String> getTables() throws SQLException {
         String selectTable =
                 "SELECT table_name FROM information_schema.tables " +
-                        "WHERE table_schema = '"+schema+"' " +
+                        "WHERE table_schema = 'public' " +
                         "and table_type = 'BASE TABLE'";
 
         ResultSet result = state.executeQuery(selectTable);
-        List<String> tables = new ArrayList<String>(Integer.parseInt(result.toString()));
-        System.out.println(tables);
+
+        List<String> tables = new ArrayList<String>();
+        while(result.next()){
+            tables.add(result.getString("table_name"));
+        }
+        return tables;
     }
 
     @Override
-    public void getColumns(String tabela) throws SQLException {
+    public List<String> getColumns(String tabela) throws SQLException {
 
         String selectQuery =
                 "SELECT column_name,data_type" +
@@ -51,6 +56,12 @@ public class QueryTool implements QuerySerivce{
                         "     ;";
 
         ResultSet result = state.executeQuery(selectQuery);
+
+        List<String> columns = new ArrayList<String>();
+        while(result.next()){
+            columns.add(result.getString("column_name"));
+        }
+        return columns;
     }
 
 }

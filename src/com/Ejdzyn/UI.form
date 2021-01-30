@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.Ejdzyn.UI">
+  <grid id="27dc6" binding="start" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+    </constraints>
+    <properties>
+     
+    </properties>
+    <border type="none"/>
+    <children/>
+  </grid>
+</form>
