@@ -2,6 +2,7 @@ package com.Ejdzyn.Service;
 
 import com.Ejdzyn.Connection.Interface;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -81,6 +82,22 @@ public class QueryTool implements QuerySerivce{
             }
         }
         return products;
+    }
+
+    public void performQuery(String query) throws SQLException {
+
+        PreparedStatement st = anInterface.getCon().prepareStatement(query);
+        if(st.execute()){
+            while(st.getResultSet().next()){
+                String row = "";
+                for (int i = 1; i <= st.getMetaData().getColumnCount(); i++) {
+                    row += st.getResultSet().getString(i)+", ";
+                }
+                System.out.println(row);
+            }
+            System.out.println("Performed select");
+        } else System.out.println("Not performed");
+
     }
 
 }

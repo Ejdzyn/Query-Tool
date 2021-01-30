@@ -4,5 +4,10 @@ import javax.swing.*;
 
 public class UI {
     public JPanel start;
-    public JTabbedPane tabbedPane1;
+    public JPanel buttonMenu;
+    public JPanel table;
+    public JButton refreshButton;
+    public JTextField textInput;
+    public JButton performButton;
+    public JPanel inputPanel;
 }

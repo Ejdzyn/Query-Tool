@@ -1,16 +1,17 @@
 package com.Ejdzyn.GUI;
 
+import com.Ejdzyn.GUI.Components.HintTextField;
 import com.Ejdzyn.Repository.RowCollector;
 import com.Ejdzyn.Service.QueryTool;
 import com.Ejdzyn.UI;
 
 import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class DatabaseInterfaceFrame extends UI {
 
@@ -29,17 +30,24 @@ public class DatabaseInterfaceFrame extends UI {
         this.frame = new JFrame("Police DataBase");
         frame.setContentPane(start);
 
-        JPanel panel = new JPanel(new GridBagLayout());
-
-        frame.add(panel);
         frame.setVisible(true);
 
+        refreshButton.addActionListener(e -> new Thread(() -> {
+            try {
+                addTables();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }).start());
 
         try {
             addTables();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
+        setButtonAction();
+        addButtons();
 
         frame.pack();
         frame.revalidate();
@@ -66,25 +74,130 @@ public class DatabaseInterfaceFrame extends UI {
             }
         });
 
+        new Thread(() -> {
+            while(true){
+                try {
+                    frame.revalidate();
+                    frame.repaint();
+                    Thread.sleep(250);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
     }
 
     private void addTables() throws SQLException {
 
+        while(this.table.getComponentCount()!=0){
+            this.table.remove(0);
+        }
 
+        this.frame.revalidate();
+        this.frame.repaint();
+        this.table.revalidate();
+
+        JPanel buttonPanel = new JPanel(new GridLayout());
         JTabbedPane tabbedPane = new JTabbedPane();
 
+
         for(String t : queryTool.getTables()){
-            //System.out.println(t);
-
-            //???
-            RowCollector rowCollector = new RowCollector(queryTool.getRows(t));
+            RowCollector rowCollector = new RowCollector(queryTool.getRows(t),queryTool.getColumns(t));
             JTable table = new JTable(rowCollector);
+
             JScrollPane jS = new JScrollPane(table);
+            jS.setName(t);
             tabbedPane.add(t,jS);
+
         }
+
         JScrollPane jScrollPane = new JScrollPane(tabbedPane);
-        this.frame.add(jScrollPane);
+        buttonPanel.add(jScrollPane);
+        this.table.add(buttonPanel);
+
+        this.frame.revalidate();
+        this.frame.repaint();
+        this.table.revalidate();
 
 
+        tabbedPane.addChangeListener(e -> {
+
+            while(this.inputPanel.getComponentCount()!=0){
+                this.inputPanel.remove(0);
+            }
+
+            JPanel jPanel = new JPanel(new FlowLayout(5,5,FlowLayout.LEFT));
+            jPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+            try {
+                List<String> columns = queryTool.getColumns(tabbedPane.getSelectedComponent().getName());
+
+                List<HintTextField> inputs = new ArrayList<>();
+
+                for(String c : columns){
+                    HintTextField jTextField = new HintTextField(c);
+                    jTextField.setName(c);
+                    jTextField.setMargin(new Insets(5,5,5,5));
+                    jPanel.add(jTextField);
+                    inputs.add(jTextField);
+                }
+                JButton insert = new JButton("INSERT");
+                insert.setBackground(Color.ORANGE);
+                JButton update = new JButton("UPDATE");
+                update.setBackground(Color.PINK);
+                JButton delete = new JButton("DELETE");
+                delete.setBackground(Color.RED);
+                jPanel.add(insert);
+                jPanel.add(update);
+                jPanel.add(delete);
+                inputPanel.add(jPanel,0);
+                frame.revalidate();
+                frame.repaint();
+
+                delete.addActionListener(e1 -> {
+                    String query = "DELETE FROM "+tabbedPane.getSelectedComponent().getName()+" ";
+                    for(HintTextField input : inputs){
+
+                    }
+                });
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            //buttonMenu.add();
+
+        });
+
+        tabbedPane.setSelectedIndex(1);
+        tabbedPane.setSelectedIndex(0);
+
+    }
+
+    private void addButtons(){
+
+    }
+
+    private void setButtonAction(){
+        performButton.addActionListener(e -> new Thread(() -> {
+            try {
+                queryTool.performQuery(textInput.getText());
+                textInput.setText("");
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }).start());
+
+        textInput.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode()==KeyEvent.VK_ENTER){
+                    try {
+                        queryTool.performQuery(textInput.getText());
+                        textInput.setText("");
+                    } catch (SQLException throwables) {
+                        throwables.getMessage();
+                    }
+                }
+            }
+        });
     }
 }

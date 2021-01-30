@@ -8,9 +8,9 @@ import java.util.Map;
 
 public class RowCollector extends AbstractTableModel {
 
-    public RowCollector(Map<String, List<String>> products){
+    public RowCollector(Map<String, List<String>> products, List<String> columns){
         this.products = products;
-
+        this.columns = columns;
     }
 
     public Map<String, List<String>> getProducts() {
@@ -22,6 +22,7 @@ public class RowCollector extends AbstractTableModel {
     }
 
     private Map<String, List<String>> products;
+    private final List<String> columns;
 
     @Override
     public int getRowCount() {
@@ -33,8 +34,6 @@ public class RowCollector extends AbstractTableModel {
 
     @Override
     public String getColumnName(int column) {
-
-        List<String> columns = new ArrayList<>(products.keySet());
         return columns.get(column);
     }
 
@@ -46,8 +45,10 @@ public class RowCollector extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         if(!products.isEmpty()) {
-            List<String> columns = new ArrayList<>(products.keySet());
             return products.get(columns.get(columnIndex)).get(rowIndex);
         } else return null;
     }
+
+
+
 }
