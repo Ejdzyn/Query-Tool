@@ -11,6 +11,8 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +34,7 @@ public class DatabaseInterfaceFrame extends UI {
         }
 
         this.frame = new JFrame("Police DataBase");
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         frame.setContentPane(start);
 
         frame.setVisible(true);
@@ -152,6 +154,24 @@ public class DatabaseInterfaceFrame extends UI {
         inputPanel.add(jPanel,0);
         frame.validate();
         frame.repaint();
+
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+
+                int reply = JOptionPane.showConfirmDialog(frame, "Close window?", "Close interface", JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION) {
+                    try {
+                        queryTool.close();
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                    System.out.println("Rozłączono");
+                    System.exit(0);
+                }
+            }
+        });
 
         for (HintTextField in : inputs){
             in.setMinimumSize(in.getSize());
@@ -295,4 +315,6 @@ public class DatabaseInterfaceFrame extends UI {
             }
         });
     }
+
+
 }

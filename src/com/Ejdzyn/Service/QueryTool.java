@@ -109,7 +109,7 @@ public class QueryTool implements QuerySerivce{
         } catch (SQLException throwables) {
             anInterface.getCon().rollback();
         }
-        state.close();
+        result.close();
         return null;
     }
 
