@@ -57,6 +57,7 @@ public class QueryTool implements QuerySerivce{
         while(result.next()){
             columns.add(result.getString("column_name"));
         }
+        result.close();
         return columns;
     }
 
@@ -81,21 +82,29 @@ public class QueryTool implements QuerySerivce{
                 products.get(c).add(result.getString(c));
             }
         }
+        result.close();
         return products;
     }
 
     public void performQuery(String query) throws SQLException {
 
-        PreparedStatement st = anInterface.getCon().prepareStatement(query);
-        if(st.execute()){
-            while(st.getResultSet().next()){
-                String row = "";
-                for (int i = 1; i <= st.getMetaData().getColumnCount(); i++) {
-                    row += st.getResultSet().getString(i)+", ";
+        try {
+            PreparedStatement st = anInterface.getCon().prepareStatement(query);
+            if (st.execute()) {
+                while (st.getResultSet().next()) {
+                    String row = "";
+                    for (int i = 1; i <= st.getMetaData().getColumnCount(); i++) {
+                        row += st.getResultSet().getString(i) + ", ";
+                    }
+                    System.out.println(row);
                 }
-                System.out.println(row);
+                System.out.println("Select");
             }
-            System.out.println("Select");
+            anInterface.getCon().commit();
+            st.close();
+        } catch (SQLException throwables) {
+            anInterface.getCon().rollback();
+            throwables.printStackTrace();
         }
 
     }
