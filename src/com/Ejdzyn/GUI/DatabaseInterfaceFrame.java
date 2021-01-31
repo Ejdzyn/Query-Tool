@@ -114,6 +114,7 @@ public class DatabaseInterfaceFrame extends UI {
                 throwables.printStackTrace();
             }
         });
+
     }
 
     private void addButtons(JTabbedPane tabbedPane) throws SQLException {
@@ -126,9 +127,11 @@ public class DatabaseInterfaceFrame extends UI {
 
         JPanel jPanel = new JPanel(new FlowLayout(5,5,FlowLayout.LEFT));
         jPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
-        List<String> columns = queryTool.getColumns(tabbedPane.getSelectedComponent().getName());
+        List<String> columns = queryTool.getColumns(tabbedPane.getComponent(last).getName());
 
         List<HintTextField> inputs = new ArrayList<>();
+
+        System.out.println(columns);
 
         for(String c : columns){
             HintTextField jTextField = new HintTextField(c);
