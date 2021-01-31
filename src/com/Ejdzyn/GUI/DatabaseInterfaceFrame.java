@@ -106,11 +106,15 @@ public class DatabaseInterfaceFrame extends UI {
 
         tabbedPane.addChangeListener(e -> {
             last=tabbedPane.getSelectedIndex();
-            addButtons(tabbedPane);
+            try {
+                addButtons(tabbedPane);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         });
     }
 
-    private void addButtons(JTabbedPane tabbedPane){
+    private void addButtons(JTabbedPane tabbedPane) throws SQLException {
 
         //System.out.println(tables.get(tabbedPane.getSelectedIndex()).getSelectedColumn());
 
@@ -120,161 +124,158 @@ public class DatabaseInterfaceFrame extends UI {
 
         JPanel jPanel = new JPanel(new FlowLayout(5,5,FlowLayout.LEFT));
         jPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
-        try {
-            List<String> columns = queryTool.getColumns(tabbedPane.getSelectedComponent().getName());
+        List<String> columns = queryTool.getColumns(tabbedPane.getSelectedComponent().getName());
 
-            List<HintTextField> inputs = new ArrayList<>();
+        List<HintTextField> inputs = new ArrayList<>();
 
-            for(String c : columns){
-                HintTextField jTextField = new HintTextField(c);
-                jTextField.setName(c);
-                jTextField.setMargin(new Insets(5,5,5,5));
-                jPanel.add(jTextField);
-                inputs.add(jTextField);
-            }
-            JButton insert = new JButton("INSERT");
-            insert.setBackground(Color.ORANGE);
-            JButton update = new JButton("UPDATE");
-            update.setBackground(Color.PINK);
-            JButton delete = new JButton("DELETE");
-            delete.setBackground(Color.RED);
-
-            JButton select = new JButton("SELECT");
-            select.setBackground(Color.LIGHT_GRAY);
-
-            jPanel.add(insert);
-            jPanel.add(update);
-            jPanel.add(delete);
-            jPanel.add(select);
-            inputPanel.add(jPanel,0);
-            frame.validate();
-            frame.repaint();
-
-            for (HintTextField in : inputs){
-                in.setMinimumSize(in.getSize());
-                in.getDocument().addDocumentListener(new DocumentListener() {
-                    @Override
-                    public void insertUpdate(DocumentEvent e) {
-                        if(in.getMinimumSize().width<in.getPreferredSize().width){
-                            buttonMenu.revalidate();
-                        }
-                    }
-
-                    @Override
-                    public void removeUpdate(DocumentEvent e) {
-                        if(in.getMinimumSize().width<in.getPreferredSize().width){
-                            buttonMenu.revalidate();
-                        }
-                    }
-
-                    @Override
-                    public void changedUpdate(DocumentEvent e) {
-                        if(in.getMinimumSize().width<in.getPreferredSize().width){
-                            buttonMenu.revalidate();
-                        }
-                    }
-                });
-            }
-
-            delete.addActionListener(e1 -> {
-                String query = "DELETE FROM "+tabbedPane.getSelectedComponent().getName()+" WHERE ";
-
-                List<String> values = new ArrayList<>();
-                for (HintTextField input : inputs) {
-                    if (!input.getText().isEmpty()) {
-                        values.add(input.getName() + " = '" + input.getText()+"'");
-                    }
-                }
-
-                if(!values.isEmpty()){
-                    for (int i = 0; i < values.size(); i++) {
-                        query+=values.get(i);
-                        if(i!= values.size()-1){
-                            query+=" AND ";
-                        }
-                    }
-                }
-
-                textInput.setText(query);
-            });
-
-            insert.addActionListener(e1 -> {
-                String query = "INSERT INTO "+tabbedPane.getSelectedComponent().getName()+" VALUES (";
-
-                List<String> values = new ArrayList<>();
-                for (HintTextField input : inputs) {
-                    if (!input.getText().isEmpty()) {
-                        values.add("'"+ input.getText()+"'");
-                    }
-                }
-
-                if(!values.isEmpty()){
-                    for (int i = 0; i < values.size(); i++) {
-                        query+=values.get(i);
-                        if(i!= values.size()-1){
-                            query+=",";
-                        }
-                    }
-                }
-
-                textInput.setText(query+" );");
-            });
-
-            update.addActionListener(e1 -> {
-                String query = "UPDATE "+tabbedPane.getSelectedComponent().getName()+" SET ";
-
-                List<String> values = new ArrayList<>();
-                for (HintTextField input : inputs) {
-                    if (!input.getText().isEmpty()) {
-                        values.add(input.getName() + " = '" + input.getText()+"'");
-                    }
-                }
-
-                if(!values.isEmpty()){
-                    for (int i = 0; i < values.size(); i++) {
-                        query+=values.get(i);
-                        if(i!= values.size()-1){
-                            query+=", ";
-                        }
-                    }
-                }
-
-                textInput.setText(query);
-            });
-
-            select.addActionListener(e1 -> {
-                String query = "SELECT * FROM "+tabbedPane.getSelectedComponent().getName();
-
-                List<String> values = new ArrayList<>();
-                for (HintTextField input : inputs) {
-                    if (!input.getText().isEmpty()) {
-                        values.add(input.getName() + " = '" + input.getText()+"'");
-                    }
-                }
-
-                if(!values.isEmpty()){
-                    query+=" WHERE ";
-                    for (int i = 0; i < values.size(); i++) {
-                        query+=values.get(i);
-                        if(i!= values.size()-1){
-                            query+=" AND ";
-                        }
-                    }
-                }
-
-                textInput.setText(query);
-            });
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        for(String c : columns){
+            HintTextField jTextField = new HintTextField(c);
+            jTextField.setName(c);
+            jTextField.setMargin(new Insets(5,5,5,5));
+            jPanel.add(jTextField);
+            inputs.add(jTextField);
         }
+        JButton insert = new JButton("INSERT");
+        insert.setBackground(Color.ORANGE);
+        JButton update = new JButton("UPDATE");
+        update.setBackground(Color.PINK);
+        JButton delete = new JButton("DELETE");
+        delete.setBackground(Color.RED);
+
+        JButton select = new JButton("SELECT");
+        select.setBackground(Color.LIGHT_GRAY);
+
+        jPanel.add(insert);
+        jPanel.add(update);
+        jPanel.add(delete);
+        jPanel.add(select);
+        inputPanel.add(jPanel,0);
+        frame.validate();
+        frame.repaint();
+
+        for (HintTextField in : inputs){
+            in.setMinimumSize(in.getSize());
+            in.getDocument().addDocumentListener(new DocumentListener() {
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(in.getMinimumSize().width<in.getPreferredSize().width){
+                        buttonMenu.revalidate();
+                    }
+                }
+
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(in.getMinimumSize().width<in.getPreferredSize().width){
+                        buttonMenu.revalidate();
+                    }
+                }
+
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(in.getMinimumSize().width<in.getPreferredSize().width){
+                        buttonMenu.revalidate();
+                    }
+                }
+            });
+        }
+
+        delete.addActionListener(e1 -> {
+            String query = "DELETE FROM "+tabbedPane.getSelectedComponent().getName()+" WHERE ";
+
+            List<String> values = new ArrayList<>();
+            for (HintTextField input : inputs) {
+                if (!input.getText().isEmpty()) {
+                    values.add(input.getName() + " = '" + input.getText()+"'");
+                }
+            }
+
+            if(!values.isEmpty()){
+                for (int i = 0; i < values.size(); i++) {
+                    query+=values.get(i);
+                    if(i!= values.size()-1){
+                        query+=" AND ";
+                    }
+                }
+            }
+
+            textInput.setText(query);
+        });
+
+        insert.addActionListener(e1 -> {
+            String query = "INSERT INTO "+tabbedPane.getSelectedComponent().getName()+" VALUES (";
+
+            List<String> values = new ArrayList<>();
+            for (HintTextField input : inputs) {
+                if (!input.getText().isEmpty()) {
+                    values.add("'"+ input.getText()+"'");
+                }
+            }
+
+            if(!values.isEmpty()){
+                for (int i = 0; i < values.size(); i++) {
+                    query+=values.get(i);
+                    if(i!= values.size()-1){
+                        query+=",";
+                    }
+                }
+            }
+
+            textInput.setText(query+" );");
+        });
+
+        update.addActionListener(e1 -> {
+            String query = "UPDATE "+tabbedPane.getSelectedComponent().getName()+" SET ";
+
+            List<String> values = new ArrayList<>();
+            for (HintTextField input : inputs) {
+                if (!input.getText().isEmpty()) {
+                    values.add(input.getName() + " = '" + input.getText()+"'");
+                }
+            }
+
+            if(!values.isEmpty()){
+                for (int i = 0; i < values.size(); i++) {
+                    query+=values.get(i);
+                    if(i!= values.size()-1){
+                        query+=", ";
+                    }
+                }
+            }
+
+            textInput.setText(query);
+        });
+
+        select.addActionListener(e1 -> {
+            String query = "SELECT * FROM "+tabbedPane.getSelectedComponent().getName();
+
+            List<String> values = new ArrayList<>();
+            for (HintTextField input : inputs) {
+                if (!input.getText().isEmpty()) {
+                    values.add(input.getName() + " = '" + input.getText()+"'");
+                }
+            }
+
+            if(!values.isEmpty()){
+                query+=" WHERE ";
+                for (int i = 0; i < values.size(); i++) {
+                    query+=values.get(i);
+                    if(i!= values.size()-1){
+                        query+=" AND ";
+                    }
+                }
+            }
+
+            textInput.setText(query);
+        });
+
     }
 
     private void setButtonAction(){
         performButton.addActionListener(e -> new Thread(() -> {
             try {
-                queryTool.performQuery(textInput.getText());
-                textInput.setText("");
+                if(queryTool.performQuery(textInput.getText())) {
+                    textInput.setText("");
+                }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -284,8 +285,9 @@ public class DatabaseInterfaceFrame extends UI {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode()==KeyEvent.VK_ENTER){
                     try {
-                        queryTool.performQuery(textInput.getText());
-                        textInput.setText("");
+                        if(queryTool.performQuery(textInput.getText())) {
+                            textInput.setText("");
+                        }
                     } catch (SQLException throwables) {
                         throwables.getMessage();
                     }

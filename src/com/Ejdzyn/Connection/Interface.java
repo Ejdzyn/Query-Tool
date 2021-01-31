@@ -36,7 +36,7 @@ public class Interface {
             System.out.println("Próba połączenia z bazą");
             con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement state = con.createStatement();
-            con.setAutoCommit(true);
+            con.setAutoCommit(false);
             System.out.println("Połączono");
 
 

@@ -8,5 +8,5 @@ interface QuerySerivce {
     List<String> getColumns(String tabela) throws SQLException;
     List<String> getTables() throws SQLException;
     Map<String,List<String>> getRows(String tabela) throws SQLException;
-    void performQuery(String query) throws SQLException;
+    boolean performQuery(String query) throws SQLException;
 }

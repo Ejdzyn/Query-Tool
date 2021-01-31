@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="70d07d84-ece0-4690-a386-494388021e23" name="Default Changelist" comment="poprawki">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/Ejdzyn/Connection/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Ejdzyn/Connection/Interface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/Ejdzyn/GUI/DatabaseInterfaceFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Ejdzyn/GUI/DatabaseInterfaceFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/Ejdzyn/Repository/RowCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Ejdzyn/Repository/RowCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/Ejdzyn/Service/QuerySerivce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Ejdzyn/Service/QuerySerivce.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/Ejdzyn/Service/QueryTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Ejdzyn/Service/QueryTool.java" afterDir="false" />
     </list>
@@ -92,7 +109,8 @@
       <updated>1612027897362</updated>
       <workItem from="1612027898510" duration="27031000" />
       <workItem from="1612087627739" duration="283000" />
-      <workItem from="1612092293736" duration="4043000" />
+      <workItem from="1612092293736" duration="4092000" />
+      <workItem from="1612097421548" duration="792000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1612028353251</created>
@@ -150,11 +168,30 @@
       <option name="project" value="LOCAL" />
       <updated>1612055219999</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="poprawki">
+      <created>1612096390223</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1612096390223</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
@@ -185,22 +222,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="666" y="261" key="FileChooserDialogImpl/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612032671492" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1612096352530">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1612098040769">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612096352530" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1612096352530">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612098040769" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1612098040769">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612096352530" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1612096352530">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612098040769" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1612098040769">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612096352530" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1612096352530">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612098040769" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1612098040769">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612096352530" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612098040769" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1612055243290">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -221,10 +258,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612028501307" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1612055221775">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1612096392708">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612055221775" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612096392708" />
     <state x="761" y="426" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1612028163682">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

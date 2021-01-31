@@ -28,6 +28,7 @@ public class QueryTool implements QuerySerivce{
 
     @Override
     public List<String> getTables() throws SQLException {
+
         String selectTable =
                 "SELECT table_name FROM information_schema.tables " +
                         "WHERE table_schema = 'public' " +
@@ -35,11 +36,20 @@ public class QueryTool implements QuerySerivce{
 
         ResultSet result = state.executeQuery(selectTable);
 
-        List<String> tables = new ArrayList<String>();
-        while(result.next()){
-            tables.add(result.getString("table_name"));
+        try {
+
+            List<String> tables = new ArrayList<String>();
+            while (result.next()) {
+                tables.add(result.getString("table_name"));
+            }
+            result.close();
+            return tables;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
-        return tables;
+
+        result.close();
+        return null;
     }
 
     @Override
@@ -49,49 +59,66 @@ public class QueryTool implements QuerySerivce{
                 "SELECT column_name,data_type" +
                         "  FROM information_schema.columns" +
                         " WHERE table_schema = 'public'" +
-                        "   AND table_name   = '"+tabela+"'" +
+                        "   AND table_name   = '" + tabela + "'" +
                         "     ;";
 
         ResultSet result = state.executeQuery(selectQuery);
 
-        List<String> columns = new ArrayList<String>();
-        while(result.next()){
-            columns.add(result.getString("column_name"));
+        try {
+            anInterface.getCon().commit();
+
+            List<String> columns = new ArrayList<String>();
+            while (result.next()) {
+                columns.add(result.getString("column_name"));
+            }
+            result.close();
+            return columns;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
         result.close();
-        return columns;
+        return null;
     }
 
     @Override
     public Map<String,List<String>> getRows(String tabela) throws SQLException {
 
         String selectQuery =
-                "SELECT * FROM " +tabela+";";
+                "SELECT * FROM " + tabela + ";";
 
         ResultSet result = state.executeQuery(selectQuery);
+        try {
 
-        Map<String,List<String>> products = new HashMap<>();
-        List<String> columns = getColumns(tabela);
+            anInterface.getCon().commit();
 
-        for(String c : columns) {
-            products.put(c,new ArrayList<>());
-        }
+            Map<String, List<String>> products = new HashMap<>();
+            List<String> columns = getColumns(tabela);
 
-        int i = 0 ;
-        while(result.next()){
-            for(String c : columns) {
-                products.get(c).add(result.getString(c));
+            for (String c : columns) {
+                products.put(c, new ArrayList<>());
             }
+
+            int i = 0;
+            while (result.next()) {
+                for (String c : columns) {
+                    products.get(c).add(result.getString(c));
+                }
+            }
+            result.close();
+            return products;
+        } catch (SQLException throwables) {
+            anInterface.getCon().rollback();
         }
-        result.close();
-        return products;
+        state.close();
+        return null;
     }
 
     @Override
-    public void performQuery(String query) throws SQLException {
+    public boolean performQuery(String query) throws SQLException {
 
+        PreparedStatement st = anInterface.getCon().prepareStatement(query);
         try {
-            PreparedStatement st = anInterface.getCon().prepareStatement(query);
+            anInterface.getCon().commit();
             if (st.execute()) {
                 while (st.getResultSet().next()) {
                     String row = "";
@@ -100,14 +127,15 @@ public class QueryTool implements QuerySerivce{
                     }
                     System.out.println(row);
                 }
-                System.out.println("Select");
             }
-            anInterface.getCon().setAutoCommit(true);
             st.close();
+            return true;
         } catch (SQLException throwables) {
             JOptionPane.showMessageDialog(null, throwables.getMessage());
             anInterface.getCon().rollback();
             throwables.printStackTrace();
         }
+        st.close();
+        return false;
     }
 }
