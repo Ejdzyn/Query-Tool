@@ -147,24 +147,116 @@ public class DatabaseInterfaceFrame extends UI {
                 update.setBackground(Color.PINK);
                 JButton delete = new JButton("DELETE");
                 delete.setBackground(Color.RED);
+
+                JButton select = new JButton("SELECT");
+                select.setBackground(Color.LIGHT_GRAY);
+
                 jPanel.add(insert);
                 jPanel.add(update);
                 jPanel.add(delete);
+                jPanel.add(select);
                 inputPanel.add(jPanel,0);
+
                 frame.revalidate();
                 frame.repaint();
 
-                delete.addActionListener(e1 -> {
-                    String query = "DELETE FROM "+tabbedPane.getSelectedComponent().getName()+" ";
-                    for(HintTextField input : inputs){
+                for (HintTextField in : inputs){
+                    in.setMinimumSize(in.getSize());
+                    in.setPreferredSize(in.getSize());
+                }
 
+                delete.addActionListener(e1 -> {
+                    String query = "DELETE FROM "+tabbedPane.getSelectedComponent().getName()+" WHERE ";
+
+                    List<String> values = new ArrayList<>();
+                    for (HintTextField input : inputs) {
+                        if (!input.getText().isEmpty()) {
+                            values.add(input.getName() + " = '" + input.getText()+"'");
+                        }
                     }
+
+                    if(!values.isEmpty()){
+                        for (int i = 0; i < values.size(); i++) {
+                            query+=values.get(i);
+                            if(i!= values.size()-1){
+                                query+=" AND ";
+                            }
+                        }
+                    }
+
+                    textInput.setText(query);
+                });
+
+                insert.addActionListener(e1 -> {
+                    String query = "INSERT INTO "+tabbedPane.getSelectedComponent().getName()+" VALUES (";
+
+                    List<String> values = new ArrayList<>();
+                    for (HintTextField input : inputs) {
+                        if (!input.getText().isEmpty()) {
+                            values.add("'"+ input.getText()+"'");
+                        }
+                    }
+
+                    if(!values.isEmpty()){
+                        for (int i = 0; i < values.size(); i++) {
+                            query+=values.get(i);
+                            if(i!= values.size()-1){
+                                query+=",";
+                            }
+                        }
+                    }
+
+                    textInput.setText(query+" );");
+                });
+
+                update.addActionListener(e1 -> {
+                    String query = "UPDATE "+tabbedPane.getSelectedComponent().getName()+" SET ";
+
+                    List<String> values = new ArrayList<>();
+                    for (HintTextField input : inputs) {
+                        if (!input.getText().isEmpty()) {
+                            values.add(input.getName() + " = '" + input.getText()+"'");
+                        }
+                    }
+
+                    if(!values.isEmpty()){
+                        for (int i = 0; i < values.size(); i++) {
+                            query+=values.get(i);
+                            if(i!= values.size()-1){
+                                query+=", ";
+                            }
+                        }
+                    }
+
+                    textInput.setText(query);
+                });
+
+                select.addActionListener(e1 -> {
+                    String query = "SELECT * FROM "+tabbedPane.getSelectedComponent().getName();
+
+                    List<String> values = new ArrayList<>();
+                    for (HintTextField input : inputs) {
+                        if (!input.getText().isEmpty()) {
+                            values.add(input.getName() + " = '" + input.getText()+"'");
+                        }
+                    }
+
+                    if(!values.isEmpty()){
+                        query+=" WHERE ";
+                        for (int i = 0; i < values.size(); i++) {
+                            query+=values.get(i);
+                            if(i!= values.size()-1){
+                                query+=" AND ";
+                            }
+                        }
+                    }
+
+                    textInput.setText(query);
                 });
 
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
-            //buttonMenu.add();
 
         });
 

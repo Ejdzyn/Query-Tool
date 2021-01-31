@@ -95,8 +95,8 @@ public class QueryTool implements QuerySerivce{
                 }
                 System.out.println(row);
             }
-            System.out.println("Performed select");
-        } else System.out.println("Not performed");
+            System.out.println("Select");
+        }
 
     }
 
