@@ -6,6 +6,8 @@ import com.Ejdzyn.Service.QueryTool;
 import com.Ejdzyn.UI;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -30,20 +32,21 @@ public class DatabaseInterfaceFrame extends UI {
         }
 
         this.frame = new JFrame("Police DataBase");
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setContentPane(start);
 
         frame.setVisible(true);
 
         refreshButton.addActionListener(e -> new Thread(() -> {
             try {
-                addTables();
+                refreshTable();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
         }).start());
 
         try {
-            addTables();
+            refreshTable();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -58,8 +61,8 @@ public class DatabaseInterfaceFrame extends UI {
         new Thread(() -> {
             while(true){
                 try {
-                    frame.revalidate();
-                    frame.repaint();
+                    /*table.revalidate();
+                    table.repaint();*/
                     Thread.sleep(250);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -69,11 +72,7 @@ public class DatabaseInterfaceFrame extends UI {
 
     }
 
-    private void addTables() throws SQLException {
-
-        this.frame.revalidate();
-        this.frame.repaint();
-        this.table.revalidate();
+    private void refreshTable() throws SQLException {
 
         JPanel buttonPanel = new JPanel(new GridLayout());
         JTabbedPane tabbedPane = new JTabbedPane();
@@ -103,7 +102,6 @@ public class DatabaseInterfaceFrame extends UI {
         this.table.add(buttonPanel,0);
 
         this.frame.revalidate();
-        this.frame.repaint();
         this.table.revalidate();
 
         tabbedPane.addChangeListener(e -> {
@@ -149,13 +147,33 @@ public class DatabaseInterfaceFrame extends UI {
             jPanel.add(delete);
             jPanel.add(select);
             inputPanel.add(jPanel,0);
-
-            frame.revalidate();
+            frame.validate();
             frame.repaint();
 
             for (HintTextField in : inputs){
                 in.setMinimumSize(in.getSize());
-                in.setPreferredSize(in.getSize());
+                in.getDocument().addDocumentListener(new DocumentListener() {
+                    @Override
+                    public void insertUpdate(DocumentEvent e) {
+                        if(in.getMinimumSize().width<in.getPreferredSize().width){
+                            buttonMenu.revalidate();
+                        }
+                    }
+
+                    @Override
+                    public void removeUpdate(DocumentEvent e) {
+                        if(in.getMinimumSize().width<in.getPreferredSize().width){
+                            buttonMenu.revalidate();
+                        }
+                    }
+
+                    @Override
+                    public void changedUpdate(DocumentEvent e) {
+                        if(in.getMinimumSize().width<in.getPreferredSize().width){
+                            buttonMenu.revalidate();
+                        }
+                    }
+                });
             }
 
             delete.addActionListener(e1 -> {

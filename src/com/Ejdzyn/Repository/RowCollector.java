@@ -13,15 +13,7 @@ public class RowCollector extends AbstractTableModel {
         this.columns = columns;
     }
 
-    public Map<String, List<String>> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Map<String, List<String>> products) {
-        this.products = products;
-    }
-
-    private Map<String, List<String>> products;
+    private final Map<String, List<String>> products;
     private final List<String> columns;
 
     @Override
@@ -48,7 +40,4 @@ public class RowCollector extends AbstractTableModel {
             return products.get(columns.get(columnIndex)).get(rowIndex);
         } else return null;
     }
-
-
-
 }

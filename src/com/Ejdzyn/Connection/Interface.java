@@ -26,15 +26,17 @@ public class Interface {
 
     public Statement Connect() throws ClassNotFoundException, SQLException {
 
-            // łączenie z driverem postgres
             Class jdbc = Class.forName(JDBC_DRIVER);
             Driver driver = DriverManager.getDriver(DB_URL);
-            String information = "Class: " + jdbc.getCanonicalName() + " / JDBC version: " + driver.getMajorVersion() + "." + driver.getMinorVersion() + " / Database: " + DB_URL;
-            System.out.println(information);
+            String info = "Class: " + jdbc.getCanonicalName() +
+                            " / JDBC version: " + driver.getMajorVersion() + "." + driver.getMinorVersion() +
+                            " / Database: " + DB_URL;
+            System.out.println(info);
 
             System.out.println("Próba połączenia z bazą");
             con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement state = con.createStatement();
+            con.setAutoCommit(true);
             System.out.println("Połączono");
 
 

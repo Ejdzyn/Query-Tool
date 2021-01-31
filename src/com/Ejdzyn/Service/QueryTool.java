@@ -2,6 +2,7 @@ package com.Ejdzyn.Service;
 
 import com.Ejdzyn.Connection.Interface;
 
+import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -86,6 +87,7 @@ public class QueryTool implements QuerySerivce{
         return products;
     }
 
+    @Override
     public void performQuery(String query) throws SQLException {
 
         try {
@@ -100,13 +102,12 @@ public class QueryTool implements QuerySerivce{
                 }
                 System.out.println("Select");
             }
-            anInterface.getCon().commit();
+            anInterface.getCon().setAutoCommit(true);
             st.close();
         } catch (SQLException throwables) {
+            JOptionPane.showMessageDialog(null, throwables.getMessage());
             anInterface.getCon().rollback();
             throwables.printStackTrace();
         }
-
     }
-
 }
