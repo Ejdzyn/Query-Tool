@@ -26,4 +26,5 @@ Program will generate tables dynamically.
 
 You might notice an input under table, it allows you to under query command and will perform it.
 
-![Use](https://www.youtube.com/watch?v=HLMsB3X3_ZI&ab_channel=DonEjdzyno)
+![Use](./res/use.gif)
+
