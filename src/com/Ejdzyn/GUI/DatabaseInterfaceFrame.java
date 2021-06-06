@@ -63,8 +63,6 @@ public class DatabaseInterfaceFrame extends UI {
         new Thread(() -> {
             while(true){
                 try {
-                    /*table.revalidate();
-                    table.repaint();*/
                     Thread.sleep(250);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -130,8 +128,6 @@ public class DatabaseInterfaceFrame extends UI {
         List<String> columns = queryTool.getColumns(tabbedPane.getComponent(last).getName());
 
         List<HintTextField> inputs = new ArrayList<>();
-
-        System.out.println(columns);
 
         for(String c : columns){
             HintTextField jTextField = new HintTextField(c);
