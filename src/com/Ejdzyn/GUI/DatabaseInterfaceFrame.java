@@ -11,8 +11,6 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,16 +58,6 @@ public class DatabaseInterfaceFrame extends UI {
         frame.repaint();
         frame.setSize(new Dimension(960,640));
 
-        new Thread(() -> {
-            while(true){
-                try {
-                    Thread.sleep(250);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-
     }
 
     private void refreshTable() throws SQLException {
@@ -116,8 +104,6 @@ public class DatabaseInterfaceFrame extends UI {
     }
 
     private void addButtons(JTabbedPane tabbedPane) throws SQLException {
-
-        //System.out.println(tables.get(tabbedPane.getSelectedIndex()).getSelectedColumn());
 
         while(this.inputPanel.getComponentCount()!=0){
             this.inputPanel.remove(0);

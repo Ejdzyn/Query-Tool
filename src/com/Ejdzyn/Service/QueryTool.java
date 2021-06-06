@@ -1,6 +1,6 @@
 package com.Ejdzyn.Service;
 
-import com.Ejdzyn.Connection.Interface;
+import com.Ejdzyn.connection.Interface;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="PostGresInterface:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -21,7 +26,11 @@
   <component name="ChangeListManager">
     <list default="true" id="70d07d84-ece0-4690-a386-494388021e23" name="Default Changelist" comment="poprawki">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Ejdzyn/Connection/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Ejdzyn/connection/Interface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/Ejdzyn/GUI/DatabaseInterfaceFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Ejdzyn/GUI/DatabaseInterfaceFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Ejdzyn/Repository/RowCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Ejdzyn/Repository/RowCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Ejdzyn/Service/QueryTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Ejdzyn/Service/QueryTool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +46,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectId" id="1nnZceuqg3Sux65Y7LvvML5OSDC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -45,6 +55,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/postgresql-42.2.18.jar" />
@@ -54,9 +66,10 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -64,6 +77,7 @@
       <recent name="C:\Users\AdRiaN\IdeaProjects\PostGresInterface\src\com\Ejdzyn" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\AdRiaN\IdeaProjects\PostGresInterface\res" />
       <recent name="C:\Users\AdRiaN\IdeaProjects\PostGresInterface\src\com\Ejdzyn\Service" />
     </key>
   </component>
@@ -90,6 +104,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -109,6 +134,8 @@
       <workItem from="1612092293736" duration="4092000" />
       <workItem from="1612097421548" duration="2290000" />
       <workItem from="1612102023205" duration="1425000" />
+      <workItem from="1622996465192" duration="1420000" />
+      <workItem from="1622998482102" duration="3157000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1612028353251</created>
@@ -193,6 +220,16 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -212,75 +249,5 @@
     <MESSAGE value="queries" />
     <MESSAGE value="poprawki" />
     <option name="LAST_COMMIT_MESSAGE" value="poprawki" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="414" y="175" width="1092" height="762" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1612087914498">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="414" y="175" width="1092" height="762" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612087914498" />
-    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1612033459468">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612033459468" />
-    <state x="743" y="414" width="433" height="217" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1612028947153">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="743" y="414" width="433" height="217" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612028947153" />
-    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1612031666248">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612031666248" />
-    <state x="666" y="261" key="FileChooserDialogImpl" timestamp="1612032671492">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="666" y="261" key="FileChooserDialogImpl/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612032671492" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1612103357542">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612103357542" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1612103357542">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612103357542" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1612103357542">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612103357542" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1612103357542">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612103357542" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1612055243290">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612055243290" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1612055243290">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612055243290" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1612055243290">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612055243290" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1612055243290">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612055243290" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1612028501307">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612028501307" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1612099712498">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612099712498" />
-    <state x="761" y="426" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1612028163682">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="761" y="426" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612028163682" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1612047694781">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1680.26.1680.1010@0.0.1920.1040" timestamp="1612047694781" />
   </component>
 </project>

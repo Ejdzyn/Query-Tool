@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PostGresInterface:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PostGresInterface_jar</output-path>
+    <root id="archive" name="PostGresInterface.jar">
+      <element id="module-output" name="PostGresInterface" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/postgresql-42.2.18.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
