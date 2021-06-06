@@ -24,13 +24,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70d07d84-ece0-4690-a386-494388021e23" name="Default Changelist" comment="poprawki">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="70d07d84-ece0-4690-a386-494388021e23" name="Default Changelist" comment="README.md">
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/Ejdzyn/Connection/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Ejdzyn/connection/Interface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/Ejdzyn/GUI/DatabaseInterfaceFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Ejdzyn/GUI/DatabaseInterfaceFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/Ejdzyn/Repository/RowCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Ejdzyn/Repository/RowCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/Ejdzyn/Service/QueryTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Ejdzyn/Service/QueryTool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +54,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/postgresql-42.2.18.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/res" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -135,7 +130,7 @@
       <workItem from="1612097421548" duration="2290000" />
       <workItem from="1612102023205" duration="1425000" />
       <workItem from="1622996465192" duration="1420000" />
-      <workItem from="1622998482102" duration="3157000" />
+      <workItem from="1622998482102" duration="3462000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1612028353251</created>
@@ -214,7 +209,28 @@
       <option name="project" value="LOCAL" />
       <updated>1612099710592</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="README.md">
+      <created>1623001880547</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1623001880547</updated>
+    </task>
+    <task id="LOCAL-00013" summary="README.md">
+      <created>1623002045694</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1623002045694</updated>
+    </task>
+    <task id="LOCAL-00014" summary="README.md">
+      <created>1623002072865</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1623002072865</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +264,7 @@
     <MESSAGE value="tabela" />
     <MESSAGE value="queries" />
     <MESSAGE value="poprawki" />
-    <option name="LAST_COMMIT_MESSAGE" value="poprawki" />
+    <MESSAGE value="README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="README.md" />
   </component>
 </project>

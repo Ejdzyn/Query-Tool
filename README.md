@@ -24,7 +24,7 @@ Program will generate tables dynamically.
 
 ![Main](./res/main.jpg)
 
-You might notice an input under table, it allows you to under query command and will perform it.
+You might notice an input under the table, it allows you to under query command and will perform it.
 
 ![Use](./res/use.gif)
 

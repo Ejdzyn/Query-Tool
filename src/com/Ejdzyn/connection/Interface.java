@@ -5,9 +5,9 @@ import java.sql.*;
 public class Interface {
 
     static final String JDBC_DRIVER = "org.postgresql.Driver";
-    static final String DB_URL = "jdbc:postgresql://localhost/pgAdmin";
-    static final String USER = "admin";
-    static final String PASS = "admin";
+    static final String DB_URL = "jdbc:postgresql://195.150.230.210:5434/2020_wstepnik_adrian";
+    static final String USER = "2020_wstepnik_adrian";
+    static final String PASS = "32354";
 
     private Connection con = null;
 
